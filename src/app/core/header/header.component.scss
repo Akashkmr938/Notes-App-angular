@@ -1,0 +1,11 @@
+.bg-cornflowerblue {
+  background-color: whitesmoke;
+}
+
+.container {
+  overflow-x: auto;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}

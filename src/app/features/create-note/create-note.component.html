@@ -1,0 +1,31 @@
+<div class="container">
+  <mat-card class="card-container">
+    <h1>Create New Note Here</h1>
+    <form class="example-form" [formGroup]="notesForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Title of the note</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Enter note title"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter note description"
+        ></textarea>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary">Save Note</button>
+  </mat-card>
+
+  <mat-card class="card-container">
+    <h1>See Preview here</h1>
+    <h2>Title: {{ notesForm.controls["title"].value }}</h2>
+    <h2>Description: {{ notesForm.controls["description"].value }}</h2>
+  </mat-card>
+</div>
