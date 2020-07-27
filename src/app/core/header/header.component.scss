@@ -1,11 +1,27 @@
-.bg-cornflowerblue {
-  background-color: whitesmoke;
+.header-box-shadow {
+  box-shadow: 0 8px 5px 1px rgba(0, 0, 0, 0.245),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  z-index: 2;
 }
 
-.container {
-  overflow-x: auto;
+.imageStyle {
+  border-radius: 50%;
+  width: 100%;
 }
 
-.container::-webkit-scrollbar {
-  display: none;
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.search {
+  max-width: 600px;
+  min-width: 150px;
+}
+
+.mat-toolbar {
+  padding: 0px;
+}
+
+.header-logo {
+  font-size: 23px;
 }

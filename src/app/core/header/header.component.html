@@ -5,9 +5,17 @@
     </button>
     <span class="example-fill-remaining-space"></span>
     <div style="margin-right: 10px;">
-      <button *ngIf="true" mat-icon-button>
+      <button *ngIf="!userData" mat-icon-button (click)="signInWithGoogle()">
         <img src="assets/google-icon.png" alt="google-login" />
       </button>
+      <button mat-icon-button [matMenuTriggerFor]="user" *ngIf="userData">
+        <img [src]="userData.photoUrl" alt="" class="imageStyle" />
+      </button>
+      <mat-menu #user="matMenu">
+        <button *ngIf="userData" mat-menu-item (click)="signOut()">
+          Logout
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
