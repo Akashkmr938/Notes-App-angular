@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card class="card-container">
     <h1>Create New Note Here</h1>
-    <form class="example-form" [formGroup]="notesForm">
+    <form class="example-form" [formGroup]="notesForm" (ngSubmit)="saveNote()">
       <mat-form-field class="example-full-width">
         <mat-label>Title of the note</mat-label>
         <input
@@ -19,8 +19,15 @@
           placeholder="Enter note description"
         ></textarea>
       </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!notesForm.valid"
+      >
+        Save Note
+      </button>
     </form>
-    <button mat-raised-button color="primary">Save Note</button>
   </mat-card>
 
   <mat-card class="card-container">
