@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userData = JSON.parse(localStorage.getItem('user'));
+    this.userData = JSON.parse(sessionStorage.getItem('user'));
   }
 
   signInWithGoogle(): void {
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.userData = user;
       if (this.userData) {
-        // localStorage.setItem('user', JSON.stringify(this.userData));
+        sessionStorage.setItem('user', JSON.stringify(this.userData));
         this.httpService.post('saveUser', this.userData).subscribe();
         this.sharedService.loginData = this.userData;
       }
@@ -35,6 +35,6 @@ export class HeaderComponent implements OnInit {
   signOut(): void {
     this.authService.signOut(true);
     this.sharedService.loginData = null;
-    // localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
   }
 }

@@ -5,7 +5,7 @@ import { CreateNoteComponent } from '../app/features/create-note/create-note.com
 const routes: Routes = [
   { path: '', component: CreateNoteComponent },
   {
-    path: 'show',
+    path: 'show-notes',
     loadChildren: () =>
       import('./features/show-notes/show-notes.module').then(
         (module) => module.ShowNotesModule

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SocialAuthService } from 'angularx-social-login';
 import { HttpService } from 'src/app/services/http.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-note',
@@ -18,13 +19,14 @@ export class CreateNoteComponent implements OnInit {
   constructor(
     private authService: SocialAuthService,
     private httpService: HttpService,
-    private sharedService: SharedService
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
   saveNote(): void {
-    if (!this.sharedService.loginData) {
+    const userData = JSON.parse(sessionStorage.getItem('user'));
+    if (!userData) {
       console.log('Please login to continue');
     } else if (!this.notesForm.valid) {
       console.log('Form is not valid');
@@ -32,9 +34,17 @@ export class CreateNoteComponent implements OnInit {
       const payload = {
         title: this.notesForm.controls.title.value,
         description: this.notesForm.controls.description.value,
-        userToken: this.sharedService.loginData.idToken,
+        idToken: userData.idToken,
       };
-      this.httpService.post('saveNotes', payload).subscribe();
+      this.httpService.post('saveNotes', payload).subscribe(() => {
+        this.notesForm.reset();
+        this.notesForm.updateValueAndValidity();
+        console.log(this.notesForm);
+      });
     }
+  }
+
+  routeToShowNotes(): void {
+    this.router.navigate(['/show-notes']);
   }
 }
