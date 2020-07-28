@@ -27,9 +27,17 @@
 
 .mat-column-description {
   font-size: 20px;
+  word-break: break-word;
 }
 .mat-column-title {
   font-size: 20px;
+  word-break: break-word;
+}
+
+.mat-column-crud {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .card-container {
@@ -47,8 +55,14 @@
 
 .example-full-width {
   width: 100%;
+  font-size: 22px;
 }
 
 .container {
   min-height: 70em;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2em;
 }

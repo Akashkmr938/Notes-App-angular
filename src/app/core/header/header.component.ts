@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { HttpService } from '../../services/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
   userData: any;
   constructor(
     private authService: SocialAuthService,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,6 @@ export class HeaderComponent implements OnInit {
     this.authService.signOut(true);
     sessionStorage.removeItem('user');
     this.userData = null;
+    this.router.navigate(['/']);
   }
 }

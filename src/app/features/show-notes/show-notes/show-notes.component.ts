@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-show-notes',
@@ -26,7 +27,10 @@ export class ShowNotesComponent implements OnInit {
   userData: any;
   editedNote: any;
 
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.userData = JSON.parse(sessionStorage.getItem('user'));
@@ -53,9 +57,11 @@ export class ShowNotesComponent implements OnInit {
       email: this.userData.email,
       _id: this.editedNote._id,
     };
-    console.log(payload);
 
     this.httpService.put('editNote', payload).subscribe((res) => {
+      this.snackBar.open('Note Edited Successfully', 'Close', {
+        duration: 2000,
+      });
       this.notes = res;
       this.dataSource = new MatTableDataSource(this.notes);
       this.dataSource.paginator = this.paginator;
@@ -66,6 +72,9 @@ export class ShowNotesComponent implements OnInit {
 
   deleteNote(editedNote) {
     this.httpService.delete('deleteNote', editedNote).subscribe((res) => {
+      this.snackBar.open('Note Deleted Successfully', 'Close', {
+        duration: 2000,
+      });
       this.notes = res;
       this.dataSource = new MatTableDataSource(this.notes);
       this.dataSource.paginator = this.paginator;

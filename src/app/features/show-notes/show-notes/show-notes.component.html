@@ -1,6 +1,5 @@
 <div class="container">
-  <h1 *ngIf="!notes.length">No Saved Notes. Create one to see</h1>
-  <div *ngIf="notes.length" class="example-container mat-elevation-z8">
+  <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef mat-sort-header>

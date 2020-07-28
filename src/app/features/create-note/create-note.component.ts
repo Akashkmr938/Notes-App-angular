@@ -26,7 +26,9 @@ export class CreateNoteComponent implements OnInit {
   saveNote(): void {
     const userData = JSON.parse(sessionStorage.getItem('user'));
     if (!userData) {
-      console.log('Please login to continue');
+      this.snackBar.open('Please login to continue', 'Close', {
+        duration: 2000,
+      });
     } else if (!this.notesForm.valid) {
       console.log('Form is not valid');
     } else {
