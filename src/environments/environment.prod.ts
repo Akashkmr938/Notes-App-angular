@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  baseUrl: 'https://note-app-express.herokuapp.com/',
+  production: true,
 };
