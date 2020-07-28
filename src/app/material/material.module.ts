@@ -51,7 +51,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressBarModule,
     MatSnackBarModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
   ],
   exports: [
     FormsModule,
@@ -78,7 +78,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressBarModule,
     MatSnackBarModule,
     MatTableModule,
-    MatInputModule
-  ]
+    MatInputModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

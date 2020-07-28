@@ -11,6 +11,7 @@ const routes: Routes = [
         (module) => module.ShowNotesModule
       ),
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

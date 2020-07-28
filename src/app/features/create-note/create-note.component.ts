@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SocialAuthService } from 'angularx-social-login';
 import { HttpService } from 'src/app/services/http.service';
-import { SharedService } from 'src/app/services/shared.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -34,7 +33,7 @@ export class CreateNoteComponent implements OnInit {
       const payload = {
         title: this.notesForm.controls.title.value,
         description: this.notesForm.controls.description.value,
-        idToken: userData.idToken,
+        email: userData.email,
       };
       this.httpService.post('saveNotes', payload).subscribe(() => {
         this.notesForm.reset();

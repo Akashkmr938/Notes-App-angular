@@ -9,8 +9,8 @@ import { environment } from '../../environments/environment';
 export class HttpService {
   constructor(public http: HttpClient) {}
 
-  public get(endpoint: string): Observable<any> {
-    return this.http.get(`${environment.baseUrl}/${endpoint}`);
+  public get(endpoint: string, query: any): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/${endpoint}?email=${query}`);
   }
   public post(endpoint: string, payload: any): Observable<any> {
     return this.http.post(`${environment.baseUrl}/${endpoint}`, payload);
