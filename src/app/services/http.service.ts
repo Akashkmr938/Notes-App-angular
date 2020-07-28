@@ -16,13 +16,11 @@ export class HttpService {
     return this.http.post(`${environment.baseUrl}/${endpoint}`, payload);
   }
   public put(endpoint: string, payload: any): Observable<any> {
-    return this.http.get(
-      `${environment.baseUrl}/${endpoint}?payload=${payload}`
-    );
+    return this.http.put(`${environment.baseUrl}/${endpoint}`, payload);
   }
   public delete(endpoint: string, payload: any): Observable<any> {
-    return this.http.get(
-      `${environment.baseUrl}/${endpoint}?payload=${payload}`
+    return this.http.delete(
+      `${environment.baseUrl}/${endpoint}?id=${payload._id}&email=${payload.email}`
     );
   }
 }

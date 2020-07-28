@@ -3,6 +3,7 @@ import { HttpService } from 'src/app/services/http.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-show-notes',
@@ -17,12 +18,19 @@ export class ShowNotesComponent implements OnInit {
   pages: number;
   displayedColumns = ['title', 'description', 'crud'];
   dataSource: MatTableDataSource<any>;
+  showEditCard = false;
+  notesForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+  });
+  userData: any;
+  editedNote: any;
 
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-    const userData = JSON.parse(sessionStorage.getItem('user'));
-    this.httpService.get('notes', userData.email).subscribe((data) => {
+    this.userData = JSON.parse(sessionStorage.getItem('user'));
+    this.httpService.get('notes', this.userData.email).subscribe((data) => {
       this.notes = data;
       this.dataSource = new MatTableDataSource(this.notes);
       this.dataSource.paginator = this.paginator;
@@ -30,7 +38,38 @@ export class ShowNotesComponent implements OnInit {
     });
   }
 
-  editNote(event) {
-    console.log(event);
+  editNote(editedNote: any) {
+    this.showEditCard = true;
+    this.notesForm.controls.title.patchValue(editedNote.title);
+    this.notesForm.controls.description.patchValue(editedNote.description);
+    this.editedNote = editedNote;
+  }
+
+  saveNote() {
+    console.log(this.editedNote);
+    const payload = {
+      title: this.notesForm.controls.title.value,
+      description: this.notesForm.controls.description.value,
+      email: this.userData.email,
+      _id: this.editedNote._id,
+    };
+    console.log(payload);
+
+    this.httpService.put('editNote', payload).subscribe((res) => {
+      this.notes = res;
+      this.dataSource = new MatTableDataSource(this.notes);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.showEditCard = false;
+    });
+  }
+
+  deleteNote(editedNote) {
+    this.httpService.delete('deleteNote', editedNote).subscribe((res) => {
+      this.notes = res;
+      this.dataSource = new MatTableDataSource(this.notes);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 }
