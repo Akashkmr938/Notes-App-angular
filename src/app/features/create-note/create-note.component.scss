@@ -1,13 +1,14 @@
 .card-container {
-  height: 50%;
   width: 50%;
   margin: 10px;
+  background-color: #ffee76;
 }
 
 .example-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  font-size: 22px;
 }
 
 .example-full-width {
@@ -16,4 +17,22 @@
 
 .container {
   display: flex;
+  margin: 8%;
+}
+.btn {
+  float: right;
+}
+
+.save-btn {
+  text-align-last: center;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.note-text {
+  color: brown;
+  overflow-wrap: break-word;
 }

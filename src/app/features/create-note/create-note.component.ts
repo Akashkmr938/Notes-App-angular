@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SocialAuthService } from 'angularx-social-login';
 import { HttpService } from 'src/app/services/http.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-note',
@@ -16,9 +16,9 @@ export class CreateNoteComponent implements OnInit {
   });
 
   constructor(
-    private authService: SocialAuthService,
     private httpService: HttpService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
@@ -36,14 +36,19 @@ export class CreateNoteComponent implements OnInit {
         email: userData.email,
       };
       this.httpService.post('saveNotes', payload).subscribe(() => {
-        this.notesForm.reset();
-        this.notesForm.updateValueAndValidity();
-        console.log(this.notesForm);
+        this.snackBar.open('Note added successfully', 'Close', {
+          duration: 2000,
+        });
       });
     }
   }
 
   routeToShowNotes(): void {
+    if (!sessionStorage.getItem('user')) {
+      this.snackBar.open('Login to Continue', 'Close', {
+        duration: 2000,
+      });
+    }
     this.router.navigate(['/show-notes']);
   }
 }

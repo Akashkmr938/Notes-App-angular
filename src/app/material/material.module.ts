@@ -21,6 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -52,6 +53,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSnackBarModule,
     MatTableModule,
     MatInputModule,
+    MatPaginatorModule,
   ],
   exports: [
     FormsModule,
@@ -79,6 +81,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSnackBarModule,
     MatTableModule,
     MatInputModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}

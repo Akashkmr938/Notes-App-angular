@@ -20,6 +20,7 @@
         ></textarea>
       </mat-form-field>
       <button
+        class="btn"
         mat-raised-button
         color="primary"
         type="submit"
@@ -31,12 +32,16 @@
   </mat-card>
 
   <mat-card class="card-container">
-    <h1>See Preview here</h1>
-    <h2>Title: {{ notesForm.controls["title"].value }}</h2>
-    <h2>Description: {{ notesForm.controls["description"].value }}</h2>
+    <h1>Preview here</h1>
+    <span>
+      <h2>Title:</h2>
+      <h2 class="note-text">{{ notesForm.controls["title"].value }}</h2>
+    </span>
+    <h2>Description:</h2>
+    <h2 class="note-text">{{ notesForm.controls["description"].value }}</h2>
   </mat-card>
 </div>
-<div>
+<div class="save-btn">
   <button mat-raised-button color="primary" (click)="routeToShowNotes()">
     See All Save Notes
   </button>
