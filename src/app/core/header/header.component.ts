@@ -21,8 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.authService.authState.subscribe((user) => {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
       this.userData = user;
       if (this.userData) {
         sessionStorage.setItem('user', JSON.stringify(this.userData));
