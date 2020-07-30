@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:3000',
+  gapiUrl:
+    '245046245085-2170u0rpbp1n4u2p491v8oclgm67ms3m.apps.googleusercontent.com',
 };
 
 /*

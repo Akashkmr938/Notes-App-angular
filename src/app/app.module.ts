@@ -16,6 +16,7 @@ import {
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpService } from './services/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,9 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '245046245085-2170u0rpbp1n4u2p491v8oclgm67ms3m.apps.googleusercontent.com'
-            ),
+            provider: new GoogleLoginProvider(environment.gapiUrl),
           },
         ],
       } as SocialAuthServiceConfig,
