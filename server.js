@@ -6,6 +6,6 @@ app.use(express.json());
 var distDir = __dirname + "/dist/notes-app";
 app.use(express.static(distDir));
 
-const PORT = process.env.PORT || "8080";
+const PORT = process.env.PORT || "4200";
 
 app.listen(PORT);
