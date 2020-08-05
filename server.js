@@ -1,8 +1,8 @@
 var express = require("express");
-const { PollingWatchKind } = require("typescript");
+var bodyParser = require("body-parser");
 
 var app = express();
-app.use(express.json());
+app.use(bodyParser.json());
 var distDir = __dirname + "/dist/notes-app";
 app.use(express.static(distDir));
 
