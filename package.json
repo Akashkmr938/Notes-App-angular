@@ -27,7 +27,7 @@
     "angularx-social-login": "^3.2.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
